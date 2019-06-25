@@ -23,14 +23,19 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("Template from a.gotmpl:", a.Name())
+	fmt.Printf("Template from a.gotmpl is named %q\n", a.Name())
 
 	b := a.Lookup("b.gotmpl")
-	fmt.Println("Template from b.gotmpl:", b.Name())
+	fmt.Printf("Template from b.gotmpl is named %q\n", b.Name())
 
 	bb := a.Lookup("bb")
-	fmt.Println("Template defined inside of b.gotmpl:", bb.Name())
+	fmt.Printf("Template defined inside of b.gotmpl is named %q\n", bb.Name())
 	fmt.Println("Output of Executing 'a'")
+	fmt.Println("-------------------------------------------")
+	if err := a.Execute(os.Stdout, "no data"); err != nil {
+		panic(err)
+	}
+	fmt.Println("Output of Executing 'a' the second time")
 	fmt.Println("-------------------------------------------")
 	if err := a.Execute(os.Stdout, "no data"); err != nil {
 		panic(err)
