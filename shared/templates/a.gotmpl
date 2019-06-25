@@ -1,0 +1,9 @@
+
+template "a.gotmpl" text
+
+{{ template "bb" -}}
+
+{{ template "b.gotmpl" -}}
+
+{{/* The following line, if uncommented would be recursive */}}
+{{/* template "a.gotmpl" */}}
